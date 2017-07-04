@@ -25,7 +25,7 @@ SECRET_KEY = '%dqhbm7dkg86kssf=#=yw50bvu0qqw9_tima2033f5^n_x#sh$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dmh001.local']
+ALLOWED_HOSTS = ['dmh001.local','localhost']
 
 
 # Application definition
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-cl'
 
-TIME_ZONE = 'America/Santiago'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

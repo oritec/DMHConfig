@@ -15,11 +15,36 @@
         <div class="portlet">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-cogs"></i> Caption
+                    <i class="fa fa-heartbeat"></i> Status de los nodos
                 </div>
             </div>
             <div class="portlet-body">
-
+                <div class="table-scrollable">
+                    <table class="table table-hover table-light">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center"> Id </th>
+                                <th style="text-align:center"> Nivel de Bater&iacute;a </th>
+                                <th style="text-align:center"> Último Status enviado </th>
+                                <th style="text-align:center"> Configuración? </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for nodo in nodos %}
+                                <td align="center" id="vuelo-data"> {{ nodo.nodeId }} </td>
+                                <td align="center" id="minuto-data"> {{ nodo.batteryLevel }} </td>
+                                <td align="center" id="bloque-data"> {{ nodo.msgTime }} </td>
+                                <td align="center" id="string-data"> {% if node.hasConfig %} <a href="javascript:;" class="btn btn-xs yellow"> Ir
+                                                                            <i class="fa fa-search"></i>
+                                                                        </a> {% else %} <a href="javascript:;" class="btn btn-xs green"> Agregar
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </a> {% endif %} </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
