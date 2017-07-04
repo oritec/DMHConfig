@@ -1,0 +1,18 @@
+[
+  {
+    "model": "vista.FlowSources",
+    "pk": 1,
+    "fields": {
+      "name": "Lazo 4-20 [mA]",
+      "code": 1
+    }
+  },
+  {
+    "model": "vista.FlowSources",
+    "pk": 2,
+    "fields": {
+      "name": "Totalizador de Pulsos",
+      "code": 2
+    }
+  }
+]

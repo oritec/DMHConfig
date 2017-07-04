@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load customtags %}
+{% load tz %}
+{% block css %}
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-share-alt"></i> Configuración de nodo {{ nodeId }}
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form action="#" class="horizontal-form" method="post">
+                    {% csrf_token %}
+                    <div class="form-body" style="padding-top:0px">
+                        <h3 class="form-section">Tipo de Nodo</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.nodeId.label }}</label>
+                                    {{ form.nodeId }}
+                                    <span class="help-block"> ID del nodo en la red mesh </span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.flowSource.label }}</label>
+                                    {{ form.flowSource }}
+                                    <span class="help-block"> Señalización de la señal </span>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="form-section">Parámetros</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.executionPeriod.label }}</label>
+                                    {{ form.executionPeriod }}
+                                    <span class="help-block"> Periodo de envío de información (segundos) </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.conversionFactor.label }}</label>
+                                    {{ form.conversionFactor }}
+                                    <span class="help-block"> Conversión entre [lt/s] y [mA] </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.litresPerPulse.label }}</label>
+                                    {{ form.litresPerPulse }}
+                                    <span class="help-block"> Cantidad de litros por pulso </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions left">
+                        <a href="{% url 'vista:nodos' %}" class="btn default">
+                             Cancelar
+                        </a>
+                        <button type="submit" class="btn blue">
+                            <i class="fa fa-check"></i> Guardar </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+{% endblock %}
+
+{% block jquery %}
+
+
+{% endblock %}

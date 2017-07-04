@@ -30,18 +30,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for nodo in nodos %}
                             <tr>
-                                {% for nodo in nodos %}
                                 <td align="center" id="vuelo-data"> {{ nodo.nodeId }} </td>
                                 <td align="center" id="minuto-data"> {{ nodo.batteryLevel }} </td>
                                 <td align="center" id="bloque-data"> {{ nodo.msgTime }} </td>
-                                <td align="center" id="string-data"> {% if node.hasConfig %} <a href="javascript:;" class="btn btn-xs yellow"> Ir
-                                                                            <i class="fa fa-search"></i>
-                                                                        </a> {% else %} <a href="javascript:;" class="btn btn-xs green"> Agregar
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </a> {% endif %} </td>
-                                {% endfor %}
+                                <td align="center" id="string-data">
+                                    {% if nodo.hasConfig is True %}
+                                    <a href="{% url 'vista:show_nodo' nodo.nodeId %}" class="btn btn-circle btn-xs yellow">
+                                        Ver <i class="fa fa-search"></i>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'vista:add_nodo' %}?nodo={{ nodo.nodeId }}" class="btn btn-circle btn-xs green">
+                                        Agregar <i class="fa fa-plus"></i>
+                                    </a>
+                                    {% endif %}
+                                </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

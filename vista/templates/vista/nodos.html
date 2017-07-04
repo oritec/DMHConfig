@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load customtags %}
+{% load tz %}
+{% block css %}
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-share-alt"></i> Configuración de los nodos
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-hover table-light">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center"> Id </th>
+                                <th style="text-align:center"> Señalización de flujo </th>
+                                <th style="text-align:center"> Periodo de envío de información [s] </th>
+                                <th style="text-align:center"> Factor de conversión [mA] a [lt/s] </th>
+                                <th style="text-align:center"> Litros por pulso </th>
+                                <th style="text-align:center"> Acciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for config in configs %}
+                            <tr>
+                                <td align="center"> {{ config.nodeId }} </td>
+                                <td align="center"> {{ config.flowSource }} </td>
+                                <td align="center"> {{ config.executionPeriod }} </td>
+                                <td align="center"> {{ config.conversionFactor }} </td>
+                                <td align="center"> {{ config.litresPerPulse }} </td>
+                                <td align="center">
+                                     <a href="{% url 'vista:show_nodo' config.nodeId %}" class="btn btn-circle btn-xs yellow">
+                                         Ver <i class="fa fa-search"></i>
+                                     </a>
+                                    <a href="{% url 'vista:edit_nodo' config.nodeId %}" class="btn btn-circle btn-xs blue">
+                                         Editar <i class="fa fa-edit"></i>
+                                     </a>
+
+                                    <input type="button" id="delNodo{{ config.nodeId }}" data-target="#basic" data-toggle="modal" class="btn btn-xs btn-circle red" value="Borrar" onclick="$('#formModal').attr('action','{% url 'vista:del_nodo' config.nodeId %}');"/>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <span class="glyphicon glyphicon-exclamation-sign" style="color:rgba(255, 63, 0, 0.89);font-size:20px"></span>
+                     <b>Advertencia</b> </h4>
+            </div>
+            <div class="modal-body">
+                 <h5><b>&iquest;Desea borrar el elemento?</b> </h5>
+            </div>
+            <div class="modal-footer">
+
+                <form action="" method="post" id="formModal">
+                    {% csrf_token %}
+                    <button type="button" class="btn default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" id='enviarmodal' class="btn red" name="FromList">Borrar</button>
+                    <!--<a href="" id='enviarmodal' class="btn btn-success success">Save Changes</a>-->
+                </form>
+                <!--<button type="button" id="enviarmodal" class="btn blue">Save changes</button>-->
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+{% endblock %}
+
+{% block jquery %}
+
+
+{% endblock %}
