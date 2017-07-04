@@ -14,5 +14,13 @@
       "name": "Totalizador de Pulsos",
       "code": 2
     }
+  },
+  {
+    "model": "vista.FlowSources",
+    "pk": 10,
+    "fields": {
+      "name": "Router",
+      "code": 0
+    }
   }
 ]
