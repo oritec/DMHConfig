@@ -24,7 +24,9 @@
                         <thead>
                             <tr>
                                 <th style="text-align:center"> Id </th>
-                                <th style="text-align:center"> Nivel de Bater&iacute;a </th>
+                                <th style="text-align:center"> Nivel de Bater&iacute;a [V] </th>
+                                <th style="text-align:center"> RSSI [dBm] </th>
+                                <th style="text-align:center"> SNR [dB] </th>
                                 <th style="text-align:center"> Último Status enviado </th>
                                 <th style="text-align:center"> Configuración? </th>
                             </tr>
@@ -32,10 +34,12 @@
                         <tbody>
                             {% for nodo in nodos %}
                             <tr>
-                                <td align="center" id="vuelo-data"> {{ nodo.nodeId }} </td>
-                                <td align="center" id="minuto-data"> {{ nodo.batteryLevel }} </td>
-                                <td align="center" id="bloque-data"> {{ nodo.msgTime }} </td>
-                                <td align="center" id="string-data">
+                                <td align="center"> {{ nodo.nodeId }} </td>
+                                <td align="center"> {{ nodo.batteryLevel }} </td>
+                                <td align="center"> {{ nodo.lastRSSI }} </td>
+                                <td align="center"> {{ nodo.lastSNR }} </td>
+                                <td align="center"> {{ nodo.msgTime }} </td>
+                                <td align="center">
                                     {% if nodo.hasConfig is True %}
                                     <a href="{% url 'vista:show_nodo' nodo.nodeId %}" class="btn btn-circle btn-xs yellow">
                                         Ver <i class="fa fa-search"></i>

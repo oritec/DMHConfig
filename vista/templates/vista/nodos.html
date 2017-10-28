@@ -25,8 +25,9 @@
                             <tr>
                                 <th style="text-align:center"> Id </th>
                                 <th style="text-align:center"> Señalización de flujo </th>
-                                <th style="text-align:center"> Periodo de envío de información [s] </th>
+                                <th style="text-align:center"> Periodo de envío de datos [s] </th>
                                 <th style="text-align:center"> Factor de conversión [mA] a [lt/s] </th>
+                                <th style="text-align:center"> Frecuencia filtro </th>
                                 <th style="text-align:center"> Litros por pulso </th>
                                 <th style="text-align:center"> Acciones </th>
                             </tr>
@@ -38,6 +39,7 @@
                                 <td align="center"> {{ config.flowSource }} </td>
                                 <td align="center"> {{ config.executionPeriod }} </td>
                                 <td align="center"> {{ config.conversionFactor }} </td>
+                                <td align="center"> {{ config.filterFrequency }} </td>
                                 <td align="center"> {{ config.litresPerPulse }} </td>
                                 <td align="center">
                                      <a href="{% url 'vista:show_nodo' config.nodeId %}" class="btn btn-circle btn-xs yellow">
