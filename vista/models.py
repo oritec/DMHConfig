@@ -10,6 +10,18 @@ class FlowSources(models.Model):
     def __str__(self):
         return self.name
 
+class Data(models.Model):
+    id = models.AutoField(primary_key=True, null=False)
+    nodeId = models.IntegerField(null=False, blank=False)
+    msgTime = models.DateTimeField(auto_now_add=True)
+    sent = models.BooleanField(default=False)
+    flujo = models.FloatField(null=False, blank=False)
+    totalizador = models.FloatField(null=False, blank=False)
+    corriente = models.FloatField(null=False, blank=False, default=0)
+    class Meta:
+        db_table = 'data'
+
+
 class NodeConfig(models.Model):
     nodeId = models.IntegerField(primary_key=True, null=False)
     flowSource = models.ForeignKey('flowSources', on_delete=models.CASCADE)
