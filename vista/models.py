@@ -31,3 +31,17 @@ class NodeStatus(models.Model):
     sent = models.BooleanField(default=False)
     class Meta:
         db_table = 'node_status'
+
+class Analisis(models.Model):
+    nodeId = models.AutoField(primary_key=True, null=False)
+    temperatura = models.FloatField(null=False, blank = False)
+    potencia = models.FloatField(null=False, blank = False)
+    voltage = models.FloatField(null=False, blank = False)
+    corriente = models.FloatField(null=False, blank = False)
+    carga = models.IntegerField(null=False, blank=False)
+    fault = models.IntegerField(null=False, blank=False)
+    msgTime = models.DateTimeField(auto_now_add=True)
+    sent = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'analisis'
