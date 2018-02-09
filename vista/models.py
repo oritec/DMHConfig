@@ -33,7 +33,8 @@ class NodeStatus(models.Model):
         db_table = 'node_status'
 
 class Analisis(models.Model):
-    nodeId = models.AutoField(primary_key=True, null=False)
+    id = models.AutoField(primary_key=True, null=False)
+    nodeId = models.IntegerField(null=False, blank=False)
     temperatura = models.FloatField(null=False, blank = False)
     potencia = models.FloatField(null=False, blank = False)
     voltage = models.FloatField(null=False, blank = False)
