@@ -32,6 +32,8 @@ class NodeConfig(models.Model):
     class Meta:
         db_table = 'node_config'
         #unique_together = (('turbina', 'inicio'),)
+    def __str__(self):
+            return 'Nodo ' + str(self.nodeId)
 
 class NodeStatus(models.Model):
     nodeId = models.AutoField(primary_key=True, null=False)
@@ -58,3 +60,39 @@ class Analisis(models.Model):
 
     class Meta:
         db_table = 'analisis'
+
+class Eventos(models.Model):
+    TITLE_CHOICES = (
+        ('1', 'CERRADO'),
+        ('0', 'ABIERTO'),
+    )
+    id = models.AutoField(primary_key=True, null=False)
+    inicio = models.DateTimeField(null=True)
+    fin = models.DateTimeField(null=True)
+    cerrado = models.IntegerField(null=False, blank=False)
+    maquina = models.CharField(max_length=20)
+    tipoevento = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'tablaeventos'
+
+# **************************************************************************
+
+class Alarma(models.Model):
+    TITLE_CHOICES = (
+        ('ALTO', 'alto'),
+        ('BAJO', 'bajo'),
+    )
+
+    id_alarma = models.AutoField(primary_key=True, null=False)
+    #id_alarma = models.IntegerField(primary_key=True, null=False)
+    name_alarma = models.ForeignKey(NodeConfig, on_delete=models.CASCADE )
+    #name_alarma = models.CharField(max_length=30)
+    tipo_alarma = models.CharField(max_length=5, choices=TITLE_CHOICES)
+    parametro = models.FloatField(null=True,blank=True, default=0.0)
+
+    class Meta:
+        db_table = 'tabla_alarma'
+        unique_together = (('name_alarma', 'tipo_alarma'),)
+
+
