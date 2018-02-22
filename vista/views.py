@@ -156,7 +156,11 @@ def evento(request):
     contenido.subtitulo = u'Mostrar eventos'
     contenido.menu = ['menu-principal', 'menu2-evento']
 
-    datos = Eventos.objects.all()
+    #datos = Eventos.objects.all()
+    # Los datos se ordenan por el campo 'inicio' que corresponde a la fecha de inicio
+    # el "-" indica que se hace un orden de la fecha actual a la mas antigua
+    # el ":[int]" indica que se devuelven los n primeros/ultimos registros, en este caso n=10
+    datos = Eventos.objects.all().order_by('-inicio')[:10]
 
 
     return render(request, 'vista/evento.html',
@@ -206,6 +210,7 @@ def add_alarma(request):
             #return render(request, 'vista/error.html', )
     else:
         form_a = AlarmaForm()
+
         if request.method == 'GET':
             form_a = AlarmaForm()
             return render(request, 'vista/addAlarma.html', {'form_alarma': form_a, })

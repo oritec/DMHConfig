@@ -76,6 +76,7 @@ class Eventos(models.Model):
     class Meta:
         db_table = 'tablaeventos'
 
+
 # **************************************************************************
 
 class Alarma(models.Model):
@@ -83,6 +84,7 @@ class Alarma(models.Model):
         ('ALTO', 'alto'),
         ('BAJO', 'bajo'),
     )
+
 
     id_alarma = models.AutoField(primary_key=True, null=False)
     #id_alarma = models.IntegerField(primary_key=True, null=False)

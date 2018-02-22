@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'nodos/editar/(?P<id>[0-9]+)', views.edit_nodo, name='edit_nodo'),
     url(r'nodos/mostrar/(?P<id>[0-9]+)', views.show_nodo, name='show_nodo'),
     url(r'nodos', views.nodos, name='nodos'),
-    url(r'evento/show_evento/(?P<id>[0-9]+)', views.show_evento, name='show_evento'),
+    #url(r'evento/show_evento/(?P<id>[0-9]+)', views.show_evento, name='show_evento'),
     url(r'evento', views.evento, name='evento'),
 
     url(r'alarma/add_alarma', views.add_alarma, name='add_alarma'),
