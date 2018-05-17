@@ -29,6 +29,7 @@
                                 <th style="text-align:center"> Factor de conversión [mA] a [lt/s] </th>
                                 <th style="text-align:center"> Frecuencia filtro </th>
                                 <th style="text-align:center"> Litros por pulso </th>
+                                <th style="text-align:center"> Valor offset </th>
                                 <th style="text-align:center"> Acciones </th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                 <td align="center"> {{ config.conversionFactor }} </td>
                                 <td align="center"> {{ config.filterFrequency }} </td>
                                 <td align="center"> {{ config.litresPerPulse }} </td>
+                                <td align="center"> {{ config.offsetValue }} </td>
                                 <td align="center">
                                      <a href="{% url 'vista:show_nodo' config.nodeId %}" class="btn btn-circle btn-xs yellow">
                                          Ver <i class="fa fa-search"></i>

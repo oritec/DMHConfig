@@ -5,14 +5,15 @@ from models import NodeConfig
 class NodeConfigForm(ModelForm):
     class Meta:
         model = NodeConfig
-        fields = ['nodeId', 'flowSource', 'conversionFactor', 'executionPeriod','litresPerPulse','filterFrequency']
+        fields = ['nodeId', 'flowSource', 'conversionFactor', 'executionPeriod','litresPerPulse','filterFrequency','offsetValue']
         labels = {
             "nodeId": "Nodo ID",
             "flowSource": "Señalización del flujo",
             "executionPeriod": "Periodo de envío de datos",
             "conversionFactor": "Factor de conversión",
             "litresPerPulse": "Litros por pulso",
-            "filterFrequency": "Frecuencia de corte filtro 4-20 [mA]"
+            "filterFrequency": "Frecuencia de corte filtro 4-20 [mA]",
+            "offsetValue": "Valor offset"
         }
     def __init__(self, *args, **kwargs):
         super(NodeConfigForm, self).__init__(*args, **kwargs)
@@ -22,3 +23,4 @@ class NodeConfigForm(ModelForm):
         self.fields['executionPeriod'].widget.attrs['class'] = 'form-control'
         self.fields['litresPerPulse'].widget.attrs['class'] = 'form-control'
         self.fields['filterFrequency'].widget.attrs['class'] = 'form-control'
+        self.fields['offsetValue'].widget.attrs['class'] = 'form-control'

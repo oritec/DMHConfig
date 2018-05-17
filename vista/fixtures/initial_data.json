@@ -17,6 +17,14 @@
   },
   {
     "model": "vista.FlowSources",
+    "pk": 3,
+    "fields": {
+      "name": "Sensor de Nivel",
+      "code": 3
+    }
+  },
+  {
+    "model": "vista.FlowSources",
     "pk": 10,
     "fields": {
       "name": "Router",

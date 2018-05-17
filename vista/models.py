@@ -29,6 +29,7 @@ class NodeConfig(models.Model):
     executionPeriod = models.IntegerField(blank=False, null=False, default=10)
     litresPerPulse = models.IntegerField(blank=True, null=True, default=500)
     filterFrequency = models.FloatField(null=True,blank=True, default=1.0)
+    offsetValue = models.FloatField(null=True, blank=True, default=0.0)
     class Meta:
         db_table = 'node_config'
         #unique_together = (('turbina', 'inicio'),)
