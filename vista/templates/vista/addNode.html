@@ -76,6 +76,16 @@
                                 </div>
                             </div>
                         </div>
+                        <h3 class="form-section">Parámetros Sensor de nivel</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">{{ form.offsetValue.label }}</label>
+                                    {{ form.offsetValue }}
+                                    <span class="help-block"> Parámetro de calibración de sensor </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions left">
                         <a href="{% url 'vista:nodos' %}" class="btn default">

@@ -7,7 +7,7 @@ from django.core.validators import validate_ipv46_address
 class NodeConfigForm(ModelForm):
     class Meta:
         model = NodeConfig
-        fields = ['nodeId', 'flowSource', 'conversionFactor', 'executionPeriod','litresPerPulse','filterFrequency','offsetValue']
+        fields = ['nodeId', 'flowSource', 'conversionFactor', 'executionPeriod','litresPerPulse','filterFrequency', 'offsetValue']
         labels = {
             "nodeId": "Nodo ID",
             "flowSource": "Señalización del flujo",
