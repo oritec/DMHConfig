@@ -59,8 +59,3 @@ class AlarmaForm(ModelForm):
 
         self.fields['tipo_alarma'].widget.attrs['class'] = 'form-control'
         self.fields['parametro'].widget.attrs['class'] = 'form-control'
-
-
-
-
-
