@@ -9,40 +9,80 @@
 
 {% block contenido %}
 
-<div class="row">
-
-    <div class="col-md-12">
-        <div class="portlet">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-database"></i> Fuente de datos
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-database"></i> Fuente de datos
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body">
-                <div class="table-scrollable">
-                    <table class="table table-hover table-light">
-                        <thead>
-                            <tr>
-                                <th style="text-align:center"> Nombre </th>
-                                <th style="text-align:center"> Código Sistema </th>
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-hover table-light">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center"> Nombre </th>
+                                    <th style="text-align:center"> Código Sistema </th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for source in sources %}
-                            <tr>
-                                <td align="center"> {{ source.name }} </td>
-                                <td align="center"> 0x{{ source.code|stringformat:"02x" }} </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for source in sources %}
+                                <tr>
+                                    <td align="center"> {{ source.name }} </td>
+                                    <td align="center"> 0x{{ source.code|stringformat:"02x" }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-database"></i> Configuración base de datos
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form action="#" class="horizontal-form" method="post">
+                        {% csrf_token %}
+                        <div class="form-body" style="padding-top:0px">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label">{{ form.http_dest.label }}</label>
+                                        {{ form.http_dest }}
+                                        <span class="help-block"> {{ form.http_dest.errors }} </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label">{{ form.enable_send.label }}</label>
+                                        {{ form.enable_send }}
+                                        <span class="help-block"> {{ form.enable_send.errors }} </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label" style="padding-top: 40px;"></label>
+                                        <button type="submit" id='enviarmodal' class="btn green" name="FromList">Editar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

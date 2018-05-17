@@ -30,5 +30,13 @@
       "name": "Router",
       "code": 0
     }
+  },
+  {
+    "model": "vista.SystemConfig",
+    "pk": 1,
+    "fields": {
+      "http_dest": "10.66.110.92",
+      "enable_send": 1
+    }
   }
 ]

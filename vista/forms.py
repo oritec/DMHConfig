@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
-from models import NodeConfig, Eventos, Alarma
-
+from django import forms
+from models import NodeConfig, Eventos, Alarma, SystemConfig
+from django.core.validators import validate_ipv46_address
 
 class NodeConfigForm(ModelForm):
     class Meta:
@@ -39,6 +40,33 @@ class EventoForm(ModelForm):
             "tipoevento" : "Evento"
         }
 
+class SystemConfigForm(ModelForm):
+    class Meta:
+        model = SystemConfig
+        fields = ['http_dest', 'enable_send','id']
+        labels = {
+            "id": "ID Evento",
+            "http_dest": "IP Base de datos",
+            "enable_send": "Habilitar envio"
+        }
+    def __init__(self, *args, **kwargs):
+        super(SystemConfigForm, self).__init__(*args, **kwargs)
+        #self.fields['id_alarma'].widget.attrs['class'] = 'form-control'
+        #self.fields['id'].widget = forms.HiddenInput()
+        #self.fields['id'].widget = forms.HiddenInput()
+        self.fields['http_dest'].widget.attrs['class'] = 'form-control'
+        self.fields['enable_send'].widget.attrs['class'] = 'form-control'
+
+    def clean_http_dest(self):
+        data = self.cleaned_data['http_dest']
+        validate_ipv46_address(data)
+        return data
+
+    def clean_enable_send(self):
+        data = self.cleaned_data['enable_send']
+        if (data != 1 and data != 0):
+            raise forms.ValidationError("Valor sólo puede ser 1 o 0.")
+        return data
 # ************************************************************************************
 
 class AlarmaForm(ModelForm):

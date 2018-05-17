@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from vista.functions import *
-from models import NodeStatus, NodeConfig, FlowSources
+from models import NodeStatus, NodeConfig, FlowSources, SystemConfig
 from models import Eventos, Alarma
-from forms import NodeConfigForm, EventoForm, AlarmaForm
+from forms import NodeConfigForm, EventoForm, AlarmaForm, SystemConfigForm
 from django.contrib import messages
 
 
@@ -35,11 +35,26 @@ def configuracion(request):
     contenido.subtitulo = u'Configuración del sistema'
     contenido.menu = ['menu-principal', 'menu2-configuracion']
 
+    form = None
+    instancia = SystemConfig.objects.get(id=1)
+
     sources = FlowSources.objects.all()
+
+    if request.method == 'POST':
+        form = SystemConfigForm(request.POST, instance=instancia)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Configuración guardada con éxito!')
+        else:
+            messages.error(request,'Error en la configuración')
+
+    if form is None:
+        form = SystemConfigForm(instance=instancia)
 
     return render(request, 'vista/configuracion.html',
                   {'cont': contenido,
-                   'sources': sources
+                   'sources': sources,
+                   'form': form,
                    })
 
 def nodos(request):

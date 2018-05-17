@@ -77,6 +77,13 @@ class Eventos(models.Model):
     class Meta:
         db_table = 'tablaeventos'
 
+class SystemConfig(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    http_dest = models.CharField(max_length=20, blank=True, null=True)
+    enable_send = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'system_config'
 
 # **************************************************************************
 
@@ -85,8 +92,6 @@ class Alarma(models.Model):
         ('ALTO', 'alto'),
         ('BAJO', 'bajo'),
     )
-
-
     id_alarma = models.AutoField(primary_key=True, null=False)
     #id_alarma = models.IntegerField(primary_key=True, null=False)
     name_alarma = models.ForeignKey(NodeConfig, on_delete=models.CASCADE )
